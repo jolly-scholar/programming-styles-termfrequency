@@ -1,0 +1,70 @@
+
+# Style 20: Instructions on running
+Please follow the below steps for compilation and running the sample.
+All the plugins JAR files have been compiled and placed in the _deploy folder.
+You should be able to simply input the following and run the program.
+```console
+cd Week6/twenty/_deploy
+java -jar framework.jar
+```
+
+In case a new compilation is necessary, you can follow the below steps.
+
+# Fresh compilation (if needed)
+## Create *.class files for the framework
+```console
+cd Week6/twenty/framework
+javac *.java
+```
+
+## Create a framework JAR file
+```console
+jar cfm framework.jar manifest.mf *.class
+```
+
+## Create a jar: extractWords
+```console
+cd ../extractWords
+javac -cp ../framework/framework.jar *.java
+jar cf extractWords.jar *.class
+```
+
+## Create a jar: extractWordsWithZ
+```console
+cd ../extractWordsWithZ
+javac -cp ../framework/framework.jar *.java
+jar cf extractWordsWithZ.jar *.class
+```
+
+## Create a jar: countWords
+```console
+cd ../countWords
+javac -cp ../framework/framework.jar *.java
+jar cf countWords.jar *.class
+```
+
+## Create a jar: countWordsFirstLetter
+```console
+cd ../countWords
+javac -cp ../framework/framework.jar *.java
+jar cf countWords.jar *.class
+```
+
+## Copy all JAR files into _deploy folder
+```console
+cd ../deploy
+cp ../framework/*.jar ../extractWords/*.jar ../countWords/*.jar .
+cp ../extractWordsWithZ/*.jar ../countWordsFirstLetter/*.jar .
+```
+
+## Run the plugin packages starting from the framework
+```console
+java -jar framework.jar
+```
+When launching the program, it will ask you to input which configuration file to load. 
+There are total four configuration files that loads different combination of plugins:
+
+* 1) config.properties: extractWords / countWords
+* 2) config2.properties: extractWords / countWordsFirstLetter
+* 3) config3.properties: extractWordsWithZ / countWords
+* 4) config4.properties: extractWordsWithZ / countWordsFirstLetter
